@@ -32,19 +32,11 @@ header {
     right:11%;
     bottom:5%;
 }
+
 .imageOne {
     position: absolute;
     bottom:5%;
     right:-290%;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 29%;
-    height: 50%;
-    background-color:hsl(235, 24%, 19%);
 }
 
 .inputTodo {
@@ -55,6 +47,7 @@ header {
     height: 6%;
     background: hsl(235, 24%, 19%);
     margin-bottom:35px;
+    z-index: 10;
 }
 
 .inputTodo .inputTask {
@@ -67,32 +60,78 @@ header {
 }
 
 .inputTodo .btnTask {
-    width: 5%;
-    height: 45%;
+    width: 25px;
+    height: 25px;
     border-radius: 50px;
     border: 1px solid white;
     margin-right: 10px;
     margin-left: 10px;
     background: hsl(235, 24%, 19%);
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 20vh;  
+    max-height: 50vh; 
+    overflow: auto;  
 }
 
 .todoTask {
-    width:100%;
-    height: 10%;
-    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    padding:10px;
+    width: 29%;
+    height: 30%;
+    background-color:hsl(235, 24%, 19%);
+    cursor: pointer;
+    border-bottom: 1px solid hsl(233, 14%, 35%);
 }
+
+.todoTaskButton {
+    width:5%;
+    height: 25px;
+    border-radius: 50px;
+    border: 1px solid white;
+    background-color:hsl(235, 24%, 19%);
+    cursor:pointer;
+    margin-right: 10px;
+}
+
 .footerTask {
     display: flex;
+    width: 29%;
+    height: 5%;
     justify-content: space-between;
     align-items: center;
-    margin:20px;
+    padding:20px;
     font-size: 15px;
+    background-color:hsl(235, 24%, 19%);
+    cursor: pointer;
+    color:hsl(233, 14%, 35%);
+    z-index: 9;
 }
 
 .moreBtn {
     display: flex;
     gap:20px;
 }
+
+.activeA:active {
+    color:hsl(220, 98%, 61%);
+}
+
+#oneHover:hover {
+    color:white;
+}
+
+
+
+
 
 
 
