@@ -1,6 +1,6 @@
 const onUserInput = document.querySelector('.inputTask'),
-    onBtnTask = document.querySelector('.btnTask'),
-    container = document.querySelector('.container');
+      onBtnTask = document.querySelector('.btnTask'),
+      container = document.querySelector('.container');
 
 let tasks = [];
 
@@ -100,6 +100,8 @@ function updateFooter() {
     activeB = document.querySelector('.activeB');
     activeC = document.querySelector('.activeC');
 
+    activeA.classList.add('maggi')
+
     let arrayOfElements = [activeA, activeB, activeC];
 
     function removeClassFromAll(elements, className) {
@@ -147,6 +149,46 @@ container.addEventListener('click', (event) => {
         const parentDiv = currentCheckbox.parentElement;
         const taskText = parentDiv.querySelector('span');
         taskText.style.textDecoration = currentCheckbox.checked ? 'line-through' : 'none';
-        
+        updateFooter();
+        removeTodo();
     }
+});
+
+const sun = document.querySelector('.sun'),
+      body = document.querySelector('body'),
+      containerMain = document.querySelector('.containerMain'),
+      footerTask = document.querySelector('.footerTask'),
+      inputTodo = document.querySelector('.inputTodo'),
+      inputTodoTask = document.querySelector('.inputTask'),
+      btnTask = document.querySelector('.btnTask');
+
+let isDayTime = true; 
+
+sun.addEventListener('click', () => {
+    if (isDayTime) {
+        body.style.backgroundImage = 'url(/images/bg-desktop-dark.jpg)';
+        body.style.backgroundColor = 'hsl(235, 21%, 11%)';
+        sun.src = '/images/icon-sun.svg'
+        containerMain.style.backgroundColor = 'hsl(235, 24%, 19%)'
+        containerMain.style.boxShadow = '0px 0px 40px black'
+        containerMain.style.color = 'white'
+        inputTodo.style.backgroundColor = 'hsl(235, 24%, 19%)';
+        inputTodo.style.color = 'white'
+        inputTodoTask.style.backgroundColor = 'hsl(235, 24%, 19%)';
+        btnTask.style.backgroundColor = 'hsl(235, 24%, 19%)';
+        btnTask.style.border = '1px solid white'
+    } else {
+        body.style.backgroundImage = 'url(/images/bg-desktop-light.jpg)';
+        body.style.backgroundColor = 'white';
+        sun.src = '/images/icon-moon.svg'
+        containerMain.style.backgroundColor = 'white'
+        containerMain.style.boxShadow = '0px 0px 40px gray'
+        containerMain.style.color = 'black'
+        inputTodo.style.backgroundColor = 'white';
+        inputTodo.style.color = 'black'
+        inputTodoTask.style.backgroundColor = 'white';
+        btnTask.style.backgroundColor = 'white';
+        btnTask.style.border = '1px solid black';
+    }
+    isDayTime = !isDayTime;
 });

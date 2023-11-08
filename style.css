@@ -28,26 +28,27 @@ body {
 }
 
 header {
-    position: relative;
-    right:11%;
-    bottom:5%;
+    position: fixed;
+    top:15%;
+    left:36%;
 }
 
-.imageOne {
-    position: absolute;
-    bottom:5%;
-    right:-290%;
+.sun {
+    position: relative;
+    left: 350%;
+    bottom:30px;
 }
 
 .inputTodo {
     display: flex;
     justify-content: center;
     align-items: center;
+    position:fixed;
+    bottom:65%;
     width: 29%;
     height: 6%;
-    background: hsl(235, 24%, 19%);
+    background-color: hsl(235, 24%, 19%);
     margin-bottom:35px;
-    z-index: 10;
 }
 
 .inputTodo .inputTask {
@@ -70,27 +71,32 @@ header {
     cursor: pointer;
 }
 
+.containerMain {
+    width:29%;
+    height: 30%;
+    background-color: hsl(235, 24%, 19%);
+    box-shadow: 0px 0px 40px black;
+    border-radius: 10px;
+}
+
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     width: 100%;
-    min-height: 20vh;  
-    max-height: 50vh; 
-    overflow: auto;  
+    height: 100%;
+    overflow-y: auto; 
 }
 
 .todoTask {
     display: flex;
     align-items: center;
     padding:10px;
-    width: 29%;
-    height: 30%;
-    background-color:hsl(235, 24%, 19%);
+    width: 100%;
     cursor: pointer;
     border-bottom: 1px solid hsl(233, 14%, 35%);
-}
+    border-radius: 10px;
+  }
 
 .todoTaskButton {
     width:5%;
@@ -104,16 +110,13 @@ header {
 
 .footerTask {
     display: flex;
-    width: 29%;
-    height: 5%;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
     padding:20px;
     font-size: 15px;
-    background-color:hsl(235, 24%, 19%);
     cursor: pointer;
     color:hsl(233, 14%, 35%);
-    z-index: 9;
 }
 
 .moreBtn {
@@ -124,6 +127,8 @@ header {
 .maggi {
     color:hsl(220, 98%, 61%);
 }
+
+
 
 
 
