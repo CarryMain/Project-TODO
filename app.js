@@ -1,6 +1,6 @@
-const   onUserInput = document.querySelector('.inputTask'),
-        onBtnTask = document.querySelector('.btnTask'),
-        container = document.querySelector('.container');
+const onUserInput = document.querySelector('.inputTask'),
+    onBtnTask = document.querySelector('.btnTask'),
+    container = document.querySelector('.container');
 
 let tasks = [];
 
@@ -12,8 +12,8 @@ let inputText = onUserInput.value.trim();
         return;
     }
 
-    if(inputText.length > 50) {
-        inputText = inputText.slice(0, 50) + '...'
+    if(inputText.length > 30) {
+        inputText = inputText.slice(0, 30) + '...'
     }
 
     const div = document.createElement('div');
@@ -33,10 +33,59 @@ let inputText = onUserInput.value.trim();
     onUserInput.value = '';
     tasks.push(div);
 
+    updateFooter();
+    removeTodo();
+});
+
+function visibilityFilter(filter) {
+    tasks.forEach(task => {
+            switch (filter) {
+                case "all":
+                    task.style.display = "block";
+                    break;
+                case "active":
+                    if (task.getElementsByTagName('input')[0].checked) {
+                        task.style.display = "none";
+                    } else {
+                        task.style.display = "block";
+                    }
+                    break;
+                case "completed":
+                    if (!task.getElementsByTagName('input')[0].checked) {
+                        task.style.display = "none";
+                    } else {
+                        task.style.display = "block";
+                    }
+                    break;
+            }
+        });
+}
+
+function updateTodoCount() {
+    let count = 0;
+    for(let i = 0; i < tasks.length; i++) {
+        const checkbox = tasks[i].querySelector('.todoTaskButton');
+        if (!checkbox.checked) {
+            count++;
+        }
+    }
+    return count;
+}
+
+
+function updateFooter() {
     const footerTask = document.querySelector('.footerTask');
 
+    let activeA = document.querySelector('.activeA');
+    let activeB = document.querySelector('.activeB');
+    let activeC = document.querySelector('.activeC');
+
+    if(activeA) activeA.removeEventListener('click', visibilityFilter.bind(null, 'all'));
+    if(activeB) activeB.removeEventListener('click', visibilityFilter.bind(null, 'active'));
+    if(activeC) activeC.removeEventListener('click', visibilityFilter.bind(null, 'completed'));
+
     footerTask.innerHTML = ` 
-        <div id="oneHover" class="itemsLeft">${tasks.length} item(s) left</div>
+        <div id="oneHover" class="itemsLeft"> item(s) left</div>
         <div class="moreBtn">
         <div id="oneHover" class="activeA">All</div>
         <div id="oneHover" class="activeB">Active</div>
@@ -44,7 +93,53 @@ let inputText = onUserInput.value.trim();
         </div>
         <div id="oneHover" class="clearCompleted">Clear Completed</div>
     `;
-});
+
+    document.querySelector('.itemsLeft').textContent = `${updateTodoCount()} item(s) left`;
+
+    activeA = document.querySelector('.activeA');
+    activeB = document.querySelector('.activeB');
+    activeC = document.querySelector('.activeC');
+
+    let arrayOfElements = [activeA, activeB, activeC];
+
+    function removeClassFromAll(elements, className) {
+         elements.forEach(element => element.classList.remove(className));
+}
+    
+    activeA.addEventListener('click', () => {
+        removeClassFromAll(arrayOfElements, 'maggi');
+        visibilityFilter('all')
+        activeA.classList.add('maggi');
+    });
+
+    activeB.addEventListener('click', () => {
+        removeClassFromAll(arrayOfElements, 'maggi');
+        visibilityFilter('active');
+        activeB.classList.add('maggi');
+    });
+
+    activeC.addEventListener('click', () => {
+        removeClassFromAll(arrayOfElements, 'maggi');
+        visibilityFilter('completed');
+        activeC.classList.add('maggi');
+    });
+}
+
+function removeTodo() {
+    let clearCom = document.querySelector('.clearCompleted');
+    clearCom.addEventListener('click', () => {
+        tasks = tasks.filter(task => {
+            const checkbox = task.querySelector('.todoTaskButton');
+            if (checkbox.checked) {
+                task.remove();
+                return false;
+            }
+            return true;
+        });
+        updateFooter();
+    })
+}
+
 
 container.addEventListener('click', (event) => {
     if (event.target.classList.contains('todoTaskButton')) {
@@ -52,5 +147,6 @@ container.addEventListener('click', (event) => {
         const parentDiv = currentCheckbox.parentElement;
         const taskText = parentDiv.querySelector('span');
         taskText.style.textDecoration = currentCheckbox.checked ? 'line-through' : 'none';
+        
     }
 });

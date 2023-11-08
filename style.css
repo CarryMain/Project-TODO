@@ -121,9 +121,11 @@ header {
     gap:20px;
 }
 
-.activeA:active {
+.maggi {
     color:hsl(220, 98%, 61%);
 }
+
+
 
 #oneHover:hover {
     color:white;
