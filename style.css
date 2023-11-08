@@ -98,16 +98,6 @@ header {
     border-radius: 10px;
   }
 
-.todoTaskButton {
-    width:5%;
-    height: 25px;
-    border-radius: 50px;
-    border: 1px solid white;
-    background-color:hsl(235, 24%, 19%);
-    cursor:pointer;
-    margin-right: 10px;
-}
-
 .footerTask {
     display: flex;
     width: 100%;
@@ -128,12 +118,56 @@ header {
     color:hsl(220, 98%, 61%);
 }
 
-
-
-
-
 #oneHover:hover {
     color:white;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+  
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+.todoTaskButton {
+    appearance: none;
+    background-color: #fafafa;
+    border: 1px solid #cacece;
+    border-radius: 50%;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2), inset 0px -1px 0px rgba(0,0,0,0.02);
+    cursor: pointer;
+    display: inline-block;
+    height: 16px;
+    margin: 0 9px 0 1px;
+    padding: 1px;
+    width: 16px;
+}
+  
+  .todoTaskButton:checked {
+    background-color: #e9ecee;
+    border: 1px solid #adb8c0;
+    box-shadow: inset 0px 2px 3px rgba(0,0,0,0.1);
+    position: relative;
+}
+  
+  .todoTaskButton:checked:after {
+    content: '✔';
+    position: absolute;
+    top: -3px;
+    left: 1px;
+    font-size: 18px;
+    color: red;
 }
 
 
