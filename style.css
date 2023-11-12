@@ -10,7 +10,7 @@ body {
     font-family: 'Josefin Sans', sans-serif;
     color: white;
     background-color:hsl(235, 21%, 11%);
-    background-image: url(/images/bg-desktop-dark.jpg);
+    background-image: url(/bg-desktop-dark.jpg);
     background-repeat: no-repeat;
     background-size: 100% 35%;
     width: 100%;

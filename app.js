@@ -166,9 +166,9 @@ let isDayTime = true;
 
 sun.addEventListener('click', () => {
     if (isDayTime) {
-        body.style.backgroundImage = 'url(/images/bg-desktop-dark.jpg)';
+        body.style.backgroundImage = 'url(/bg-desktop-dark.jpg)';
         body.style.backgroundColor = 'hsl(235, 21%, 11%)';
-        sun.src = '/images/icon-sun.svg'
+        sun.src = '/icon-sun.svg'
         containerMain.style.backgroundColor = 'hsl(235, 24%, 19%)'
         containerMain.style.boxShadow = '0px 0px 40px black'
         containerMain.style.color = 'white'
@@ -178,9 +178,9 @@ sun.addEventListener('click', () => {
         btnTask.style.backgroundColor = 'hsl(235, 24%, 19%)';
         btnTask.style.border = '1px solid white'
     } else {
-        body.style.backgroundImage = 'url(/images/bg-desktop-light.jpg)';
+        body.style.backgroundImage = 'url(/bg-desktop-light.jpg)';
         body.style.backgroundColor = 'white';
-        sun.src = '/images/icon-moon.svg'
+        sun.src = '/icon-moon.svg'
         containerMain.style.backgroundColor = 'white'
         containerMain.style.boxShadow = '0px 0px 40px gray'
         containerMain.style.color = 'black'
